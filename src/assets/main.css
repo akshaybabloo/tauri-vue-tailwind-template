@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-umbra: #1a1a1a;
+  --color-ebony: #313335;
+}
+
+body {
+  @apply bg-umbra;
+}
+
+p {
+  @apply text-white;
+}
+
+
