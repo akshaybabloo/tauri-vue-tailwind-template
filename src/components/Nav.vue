@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {onMounted, onUnmounted, ref} from 'vue'
 import {getCurrentWindow,} from '@tauri-apps/api/window'
-import {PhMinus, PhRectangle, PhResize, PhX} from "@phosphor-icons/vue";
+import {PhMinus, PhSquare, PhResize, PhX} from "@phosphor-icons/vue";
 import {platform} from "@tauri-apps/plugin-os";
 import {invoke} from "@tauri-apps/api/core";
 
@@ -86,7 +86,7 @@ onUnmounted(() => {
                     class="block py-2 px-2 text-sm text-umbra dark:text-white dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
                     @click="appWindow.toggleMaximize()">
               <span v-if="isMaximized"><PhResize size="20"/></span>
-              <span v-else><PhRectangle size="20"/></span>
+              <span v-else><PhSquare size="20"/></span>
             </button>
           </li>
           <li>

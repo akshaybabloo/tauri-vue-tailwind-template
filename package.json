@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "tauri": "tauri",
     "t:dev": "tauri dev",
-    "t:build": "tauri build"
+    "t:build": "tauri build",
+    "icon": "tauri icon"
   },
   "dependencies": {
     "@phosphor-icons/vue": "^2.2.1",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.6",
     "@tauri-apps/cli": "^2",
+    "@types/node": "^22.13.1",
     "@vitejs/plugin-vue": "^5.2.1",
     "postcss": "^8.5.2",
     "typescript": "~5.6.2",
