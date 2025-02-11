@@ -55,11 +55,11 @@ def questions() -> Questions:
     console.print("Welcome to the setup wizard!")
     console.print("Please answer the following questions to configure your project. \n")
 
-    title = console.input("What is the title of your project? (e.g. My Project): ")
-    description = console.input("Please enter a description for your project: ")
-    product_name = console.input("What is the name of your product? (e.g. my-project): ")
-    identifier = console.input("What is the identifier of your product? (e.g. com.example.my-project): ")
-    author = console.input("What is your name? (e.g. John Doe <john.doe@example.com>): ")
+    title = console.input("What is the title of your project? (e.g. My Project)\n> ")
+    description = console.input("Please enter a description for your project\n> ")
+    product_name = console.input("What is the name of your product? (e.g. my-project)\n> ")
+    identifier = console.input("What is the identifier of your product? (e.g. com.example.my-project)\n> ")
+    author = console.input("What is your name? (e.g. John Doe <john.doe@example.com>)\n> ")
 
     return Questions(title=title, product_name=product_name, identifier=identifier, author=author,
                      description=description)
