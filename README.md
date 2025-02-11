@@ -42,3 +42,7 @@ bun run icon
 ```
 
 This should generate the required icon files for the application.
+
+## Thanks To
+
+- [Application icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/application) For the application icon.
