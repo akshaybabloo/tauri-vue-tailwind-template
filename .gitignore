@@ -28,3 +28,6 @@ target/
 
 **/*.rs.bk
 *.pdb
+
+.venv/
+*.pyi
