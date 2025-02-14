@@ -4,11 +4,13 @@ import {getCurrentWindow,} from '@tauri-apps/api/window'
 import {PhMinus, PhSquare, PhResize, PhX} from "@phosphor-icons/vue";
 import {platform} from "@tauri-apps/plugin-os";
 import {invoke} from "@tauri-apps/api/core";
+import AboutModel from "./AboutModel.vue";
 
 
 const fileMenuDropdownOpen = ref(false)
 const aboutMenuDropdownOpen = ref(false)
 const isMaximized = ref(false);
+const showAbout = ref(false);
 
 const appWindow = getCurrentWindow();
 const currentPlatform = platform();
@@ -21,6 +23,7 @@ const closeAllDropdowns = () => {
 
 const toggleDevTools = async () => {
   await invoke('toggle_devtools')
+  closeAllDropdowns()
 }
 
 // Function to toggle a specific dropdown
@@ -49,6 +52,11 @@ const handleClickOutside = (event: MouseEvent) => {
   }
 }
 
+const openAboutModel = () => {
+  showAbout.value = true
+  closeAllDropdowns()
+}
+
 // Lifecycle hooks for event listener
 onMounted(async () => {
   document.addEventListener('click', handleClickOutside)
@@ -59,7 +67,6 @@ onMounted(async () => {
   });
 
   // TODO: Mac OS specific menu bar
-  console.log(currentPlatform);
 })
 
 onUnmounted(() => {
@@ -142,15 +149,15 @@ onUnmounted(() => {
               <ul class="text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
                 <li>
                   <a href="#" @click="toggleDevTools"
-                     class="block px-4 py-1 hover:rounded-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">Toggle
+                     class="block px-4 py-1 hover:rounded-sm hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Toggle
                     Developer Tools</a>
                 </li>
                 <li>
-                  <hr class="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700">
+                  <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700">
                 </li>
                 <li>
-                  <a href="#"
-                     class="block px-4 py-1 hover:rounded-sm hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">About</a>
+                  <a href="#" @click="openAboutModel"
+                     class="block w-auto px-4 py-1 hover:rounded-sm hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">About</a>
                 </li>
               </ul>
             </div>
@@ -159,6 +166,9 @@ onUnmounted(() => {
       </div>
     </div>
   </nav>
+
+<AboutModel v-model="showAbout"/>
+
 </template>
 
 <style scoped>

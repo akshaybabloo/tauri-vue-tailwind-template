@@ -10,12 +10,4 @@ import Nav from "./components/Nav.vue";
 </template>
 
 <style scoped>
-.left-column,
-.middle-column,
-.right-column {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 </style>

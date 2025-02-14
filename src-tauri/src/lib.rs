@@ -6,6 +6,11 @@ use {
 };
 
 #[tauri::command]
+fn application_version() -> String {
+    env!("CARGO_PKG_VERSION").to_string()
+}
+
+#[tauri::command]
 fn toggle_devtools(window: tauri::Window) {
     let win = window.get_webview_window("main");
 
@@ -48,7 +53,7 @@ pub fn run() {
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_shell::init())
-        .invoke_handler(tauri::generate_handler![toggle_devtools])
+        .invoke_handler(tauri::generate_handler![toggle_devtools, application_version])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
