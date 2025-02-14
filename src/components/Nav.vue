@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { getCurrentWindow } from "@tauri-apps/api/window";
-import { PhMinus, PhSquare, PhResize, PhX } from "@phosphor-icons/vue";
 import { platform } from "@tauri-apps/plugin-os";
 import { invoke } from "@tauri-apps/api/core";
 import AboutModel from "./AboutModel.vue";
+import WindowControls from "./WindowControls.vue";
 
 const fileMenuDropdownOpen = ref(false);
 const aboutMenuDropdownOpen = ref(false);
@@ -59,6 +59,7 @@ const openAboutModel = () => {
 // Lifecycle hooks for event listener
 onMounted(async () => {
   document.addEventListener("click", handleClickOutside);
+  console.debug("Platform = " + currentPlatform);
 
   isMaximized.value = await appWindow.isMaximized();
   await appWindow.onResized(async () => {
@@ -83,47 +84,14 @@ onUnmounted(() => {
       class="w-auto flex flex-wrap items-center justify-between"
     >
       <!--Close, Minimize, Maximize Buttons-->
-      <div class="flex order-2 space-x-0">
-        <ul
-          class="flex font-normal p-0 flex-row mt-0 border-0 bg-white dark:bg-umbra dark:border-gray-700"
-        >
-          <li>
-            <button
-              type="button"
-              class="block py-2 px-2 text-sm text-umbra dark:text-white dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
-              @click="appWindow.minimize()"
-            >
-              <span><PhMinus size="20" /></span>
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              class="block py-2 px-2 text-sm text-umbra dark:text-white dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
-              @click="appWindow.toggleMaximize()"
-            >
-              <span v-if="isMaximized"><PhResize size="20" /></span>
-              <span v-else><PhSquare size="20" /></span>
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              class="block py-2 px-2 text-sm m-0 text-umbra dark:text-white dark:border-gray-700 hover:bg-red-700 dark:hover:text-white"
-              :class="isMaximized ? '' : 'pr-4'"
-              @click="appWindow.close()"
-            >
-              <span><PhX size="20" :class="isMaximized ? '' : 'ml-1'" /></span>
-            </button>
-          </li>
-        </ul>
-      </div>
+      <WindowControls />
+
       <div class="items-center justify-between flex w-auto order-1 p-1">
         <ul
           class="flex font-normal p-0 space-x-2 flex-row mt-0 border-0 bg-white dark:bg-umbra dark:border-gray-700"
         >
           <li>
-            <img src="../assets/logo.png" class="h-7" alt="CiteMe Logo" />
+            <img src="../assets/logo.png" class="ml-1 h-7" alt="CiteMe Logo" />
           </li>
           <!--File Menu-->
           <li class="relative dropdown-container">
