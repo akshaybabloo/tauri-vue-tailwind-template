@@ -10,6 +10,7 @@ class Questions(BaseModel):
     """
     Pydantic model for the questions asked in the setup wizard.
     """
+
     title: str
     product_name: str
     identifier: str
@@ -61,8 +62,13 @@ def questions() -> Questions:
     identifier = console.input("What is the identifier of your product? (e.g. com.example.my-project)\n> ")
     author = console.input("What is your name? (e.g. John Doe <john.doe@example.com>)\n> ")
 
-    return Questions(title=title, product_name=product_name, identifier=identifier, author=author,
-                     description=description)
+    return Questions(
+        title=title,
+        product_name=product_name,
+        identifier=identifier,
+        author=author,
+        description=description,
+    )
 
 
 def update_tauri_config(q: Questions):
