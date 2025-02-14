@@ -95,7 +95,7 @@ def update_tauri_config(q: Questions):
         if line.startswith("authors"):
             lines[i] = f'authors = ["{q.author}"]\n'
         if line.startswith("name") and "_lib" in line and "#" not in line:
-            lines[i] = f'name = "{q.product_name}_lib"\n'
+            lines[i] = f'name = "{q.product_name.replace("-", "_")}_lib"\n'
 
     # Write back modified TOML file
     with open(rust_project_path, "w", encoding="utf-8") as f:
