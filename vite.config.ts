@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import fs from "fs";
 
@@ -12,15 +12,21 @@ export default defineConfig(async () => ({
     vue(),
     tailwindcss(),
     {
-      name: 'move-logo',
+      name: "move-logo",
       buildStart() {
-        const logoPath = path.resolve(__dirname, 'src-tauri', 'icons', '128x128@2x.png')
-        const destPath = path.resolve(__dirname, 'src', 'assets')
-        const renameTo = path.resolve(destPath, 'logo.png')
-        fs.copyFileSync(logoPath, renameTo)
-        fs.renameSync(destPath, destPath)
-      }
-    }],
+        const logoPath = path.resolve(
+          __dirname,
+          "src-tauri",
+          "icons",
+          "128x128@2x.png",
+        );
+        const destPath = path.resolve(__dirname, "src", "assets");
+        const renameTo = path.resolve(destPath, "logo.png");
+        fs.copyFileSync(logoPath, renameTo);
+        fs.renameSync(destPath, destPath);
+      },
+    },
+  ],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //
@@ -33,10 +39,10 @@ export default defineConfig(async () => ({
     host: host || false,
     hmr: host
       ? {
-        protocol: "ws",
-        host,
-        port: 1421,
-      }
+          protocol: "ws",
+          host,
+          port: 1421,
+        }
       : undefined,
     watch: {
       // 3. tell vite to ignore watching `src-tauri`

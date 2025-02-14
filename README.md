@@ -24,14 +24,14 @@ It has a basic structure for running a Vue application inside a Tauri window.
    bun install
    ```
 3. Update the configuration by running
-    ```bash
-    uv run start.py
-    ```
-    Answer the questions to configure the application
+   ```bash
+   uv run start.py
+   ```
+   Answer the questions to configure the application
 4. Start the application
-    ```bash
-    bun run t:dev
-    ```
+   ```bash
+   bun run t:dev
+   ```
 
 ### Further Customisation
 

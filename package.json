@@ -10,7 +10,8 @@
     "tauri": "tauri",
     "t:dev": "tauri dev",
     "t:build": "tauri build",
-    "icon": "tauri icon"
+    "icon": "tauri icon",
+    "lint": "prettier --write ."
   },
   "dependencies": {
     "@phosphor-icons/vue": "^2.2.1",
@@ -28,6 +29,7 @@
     "@types/node": "^22.13.1",
     "@vitejs/plugin-vue": "^5.2.1",
     "postcss": "^8.5.2",
+    "prettier": "3.5.1",
     "typescript": "~5.7.3",
     "vite": "^6.0.3",
     "vue-tsc": "^2.1.10"
