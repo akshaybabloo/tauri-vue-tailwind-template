@@ -71,6 +71,7 @@ def update_tauri_config(q: Questions):
     """
     tauri_config_path = Path(CWD).joinpath("src-tauri", "tauri.conf.json")
     rust_project_path = Path(CWD).joinpath("src-tauri", "Cargo.toml")
+    main_rs_path = Path(CWD).joinpath("src-tauri", "src", "main.rs")
 
     with open(tauri_config_path, "r") as f:
         tauri_config = json.load(f)
@@ -100,6 +101,15 @@ def update_tauri_config(q: Questions):
     # Write back modified TOML file
     with open(rust_project_path, "w", encoding="utf-8") as f:
         f.writelines(lines)
+
+    # Modify main.rs file
+    with open(main_rs_path, "r", encoding="utf-8") as f:
+        lines = f.read()
+
+    lines = lines.replace("tauri_app_lib", f"{q.product_name.replace('-', '_')}_lib")
+
+    with open(main_rs_path, "w", encoding="utf-8") as f:
+        f.write(lines)
 
 
 if __name__ == "__main__":
