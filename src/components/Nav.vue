@@ -83,7 +83,7 @@ onUnmounted(() => {
       <div class="items-center justify-between flex w-auto order-1 p-1">
         <ul class="flex font-normal p-0 space-x-2 flex-row mt-0 border-0 bg-white dark:bg-umbra dark:border-gray-700">
           <li>
-            <img src="../assets/logo.png" class="ml-1 h-7" alt="CiteMe Logo" />
+            <img src="../assets/logo.png" class="ml-1 h-6" alt="CiteMe Logo" />
           </li>
           <!--File Menu-->
           <li class="relative dropdown-container">
