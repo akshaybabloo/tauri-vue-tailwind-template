@@ -75,21 +75,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <nav
-    data-tauri-drag-region
-    class="bg-white border-gray-200 dark:bg-umbra border-b-[1px] border-b-ebony"
-  >
-    <div
-      data-tauri-drag-region
-      class="w-auto flex flex-wrap items-center justify-between"
-    >
+  <nav data-tauri-drag-region class="bg-white border-gray-200 dark:bg-umbra border-b-[1px] border-b-ebony">
+    <div data-tauri-drag-region class="w-auto flex flex-wrap items-center justify-between">
       <!--Close, Minimize, Maximize Buttons-->
       <WindowControls />
 
       <div class="items-center justify-between flex w-auto order-1 p-1">
-        <ul
-          class="flex font-normal p-0 space-x-2 flex-row mt-0 border-0 bg-white dark:bg-umbra dark:border-gray-700"
-        >
+        <ul class="flex font-normal p-0 space-x-2 flex-row mt-0 border-0 bg-white dark:bg-umbra dark:border-gray-700">
           <li>
             <img src="../assets/logo.png" class="ml-1 h-7" alt="CiteMe Logo" />
           </li>
@@ -100,9 +92,7 @@ onUnmounted(() => {
               class="block py-1 px-2 text-sm text-umbra rounded dark:text-white dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
               @click.stop="toggleDropdown('file')"
               @mouseenter="handleMenuHover('file')"
-              :class="
-                fileMenuDropdownOpen ? 'bg-gray-100 dark:bg-gray-800' : ''
-              "
+              :class="fileMenuDropdownOpen ? 'bg-gray-100 dark:bg-gray-800' : ''"
             >
               File
             </button>
@@ -112,10 +102,7 @@ onUnmounted(() => {
               v-show="fileMenuDropdownOpen"
               class="absolute top-full left-0 z-50 font-normal bg-white divide-y divide-gray-100 rounded-sm shadow w-44 dark:bg-umbra dark:divide-gray-600 border border-gray-700"
             >
-              <ul
-                class="text-sm text-gray-700 dark:text-gray-200"
-                aria-labelledby="dropdownLargeButton"
-              >
+              <ul class="text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
                 <li>
                   <a
                     href="#"
@@ -135,9 +122,7 @@ onUnmounted(() => {
               class="block py-1 px-2 text-sm text-umbra rounded dark:text-white dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
               @click.stop="toggleDropdown('about')"
               @mouseenter="handleMenuHover('about')"
-              :class="
-                aboutMenuDropdownOpen ? 'bg-gray-100 dark:bg-gray-800' : ''
-              "
+              :class="aboutMenuDropdownOpen ? 'bg-gray-100 dark:bg-gray-800' : ''"
             >
               Help
             </button>
@@ -147,10 +132,7 @@ onUnmounted(() => {
               v-show="aboutMenuDropdownOpen"
               class="absolute top-full left-0 z-50 font-normal bg-white divide-y divide-gray-100 rounded-sm shadow w-48 dark:bg-umbra dark:divide-gray-600 border border-gray-700"
             >
-              <ul
-                class="text-sm text-gray-700 dark:text-gray-200"
-                aria-labelledby="dropdownLargeButton"
-              >
+              <ul class="text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
                 <li>
                   <a
                     href="#"

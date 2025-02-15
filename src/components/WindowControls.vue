@@ -17,16 +17,13 @@ onMounted(async () => {
   await appWindow.onResized(async () => {
     isMaximized.value = await appWindow.isMaximized();
   });
-
 });
 </script>
 
 <template>
-<!--  Windows Controls-->
+  <!--  Windows Controls-->
   <div class="flex order-2 space-x-0" v-if="currentPlatform === 'windows'">
-    <ul
-      class="flex font-normal p-0 flex-row mt-0 border-0 bg-white dark:bg-umbra dark:border-gray-700"
-    >
+    <ul class="flex font-normal p-0 flex-row mt-0 border-0 bg-white dark:bg-umbra dark:border-gray-700">
       <li>
         <button
           type="button"
@@ -59,11 +56,9 @@ onMounted(async () => {
     </ul>
   </div>
 
-<!--  Linux Controls-->
+  <!--  Linux Controls-->
   <div class="flex order-2 space-x-0" v-if="currentPlatform === 'linux'">
-    <ul
-      class="flex font-normal p-0 flex-row mt-0 border-0 bg-white dark:bg-umbra dark:border-gray-700 gap-1 mr-1"
-    >
+    <ul class="flex font-normal p-0 flex-row mt-0 border-0 bg-white dark:bg-umbra dark:border-gray-700 gap-1 mr-1">
       <li>
         <button
           type="button"
@@ -96,6 +91,4 @@ onMounted(async () => {
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -14,12 +14,7 @@ export default defineConfig(async () => ({
     {
       name: "move-logo",
       buildStart() {
-        const logoPath = path.resolve(
-          __dirname,
-          "src-tauri",
-          "icons",
-          "128x128@2x.png",
-        );
+        const logoPath = path.resolve(__dirname, "src-tauri", "icons", "128x128@2x.png");
         const destPath = path.resolve(__dirname, "src", "assets");
         const renameTo = path.resolve(destPath, "logo.png");
         fs.copyFileSync(logoPath, renameTo);
