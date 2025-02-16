@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { PhX } from "@phosphor-icons/vue";
 import { onMounted, ref } from "vue";
 import { invoke } from "@tauri-apps/api/core";
 
