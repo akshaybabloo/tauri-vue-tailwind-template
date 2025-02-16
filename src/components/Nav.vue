@@ -81,7 +81,9 @@ onUnmounted(() => {
       <WindowControls />
 
       <div class="items-center justify-between flex w-auto order-1 p-1">
-        <ul class="flex font-normal p-0 space-x-2 flex-row mt-0 border-0 bg-base-100 dark:bg-base-100 dark:border-base-300">
+        <ul
+          class="flex font-normal p-0 space-x-2 flex-row mt-0 border-0 bg-base-100 dark:bg-base-100 dark:border-base-300"
+        >
           <li>
             <img src="../assets/logo.png" class="ml-1 h-6" alt="CiteMe Logo" />
           </li>
