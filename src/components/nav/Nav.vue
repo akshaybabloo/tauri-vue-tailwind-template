@@ -3,7 +3,7 @@ import { onMounted, onUnmounted, ref } from "vue";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { platform } from "@tauri-apps/plugin-os";
 import { invoke } from "@tauri-apps/api/core";
-import AboutModel from "../AboutModel.vue";
+import AboutModel from "../model/AboutModel.vue";
 import WindowControls from "./WindowControls.vue";
 
 const fileMenuDropdownOpen = ref(false);
