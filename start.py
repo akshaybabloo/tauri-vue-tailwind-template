@@ -8,7 +8,7 @@ CWD = Path(__file__).parent
 
 class Questions(BaseModel):
     """
-    Pydantic model for the questions asked in the setup wizard.
+    Pydantic modal for the questions asked in the setup wizard.
     """
 
     title: str
@@ -78,7 +78,7 @@ def update_tauri_config(q: Questions):
     tauri_config_path = Path(CWD).joinpath("src-tauri", "tauri.conf.json")
     rust_project_path = Path(CWD).joinpath("src-tauri", "Cargo.toml")
     main_rs_path = Path(CWD).joinpath("src-tauri", "src", "main.rs")
-    about_html_path = Path(CWD).joinpath("src", "components", "model", "AboutModel.vue")
+    about_html_path = Path(CWD).joinpath("src", "components", "modal", "AboutModal.vue")
 
     with open(tauri_config_path, "r") as f:
         tauri_config = json.load(f)
@@ -118,7 +118,7 @@ def update_tauri_config(q: Questions):
     with open(main_rs_path, "w", encoding="utf-8") as f:
         f.write(lines)
 
-    # Modify AboutModel.vue file with the title
+    # Modify AboutModal.vue file with the title
     with open(about_html_path, "r", encoding="utf-8") as f:
         lines = f.read()
 
