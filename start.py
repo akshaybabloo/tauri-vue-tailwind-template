@@ -78,6 +78,7 @@ def update_tauri_config(q: Questions):
     tauri_config_path = Path(CWD).joinpath("src-tauri", "tauri.conf.json")
     rust_project_path = Path(CWD).joinpath("src-tauri", "Cargo.toml")
     main_rs_path = Path(CWD).joinpath("src-tauri", "src", "main.rs")
+    about_html_path = Path(CWD).joinpath("src", "components", "model", "AboutModel.vue")
 
     with open(tauri_config_path, "r") as f:
         tauri_config = json.load(f)
@@ -115,6 +116,15 @@ def update_tauri_config(q: Questions):
     lines = lines.replace("tauri_app_lib", f"{q.product_name.replace('-', '_')}_lib")
 
     with open(main_rs_path, "w", encoding="utf-8") as f:
+        f.write(lines)
+
+    # Modify AboutModel.vue file with the title
+    with open(about_html_path, "r", encoding="utf-8") as f:
+        lines = f.read()
+
+    lines = lines.replace("tauri-vue-tailwind-template", q.title)
+
+    with open(about_html_path, "w", encoding="utf-8") as f:
         f.write(lines)
 
 
