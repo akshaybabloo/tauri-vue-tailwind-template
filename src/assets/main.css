@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, black;
+}
 
 @theme {
   --color-umbra: #1a1a1a;
@@ -7,7 +10,6 @@
 }
 
 body {
-  @apply bg-umbra;
   user-select: none;
 }
 

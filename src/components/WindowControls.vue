@@ -23,11 +23,11 @@ onMounted(async () => {
 <template>
   <!--  Windows Controls-->
   <div class="flex order-2 space-x-0" v-if="currentPlatform === 'windows'">
-    <ul class="flex font-normal p-0 flex-row mt-0 border-0 bg-white dark:bg-umbra dark:border-gray-700">
+    <ul class="flex font-normal p-0 flex-row mt-0 border-0 bg-base-100 dark:bg-base-100 dark:border-base-300">
       <li>
         <button
           type="button"
-          class="block py-2 px-2 text-sm text-umbra dark:text-white dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+          class="block py-2 px-2 text-sm text-base-content dark:text-base-content dark:border-base-300 hover:bg-base-300 dark:hover:bg-base-300 dark:hover:text-base-content"
           @click="appWindow.minimize()"
         >
           <span><PhMinus size="20" /></span>
@@ -36,7 +36,7 @@ onMounted(async () => {
       <li>
         <button
           type="button"
-          class="block py-2 px-2 text-sm text-umbra dark:text-white dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+          class="block py-2 px-2 text-sm text-base-content dark:text-base-content dark:border-base-300 hover:bg-base-300 dark:hover:bg-base-300 dark:hover:text-base-content"
           @click="appWindow.toggleMaximize()"
         >
           <span v-if="isMaximized"><PhResize size="20" /></span>
@@ -46,7 +46,7 @@ onMounted(async () => {
       <li>
         <button
           type="button"
-          class="block py-2 px-2 text-sm m-0 text-umbra dark:text-white dark:border-gray-700 hover:bg-red-700 dark:hover:text-white"
+          class="block py-2 px-2 text-sm m-0 text-base-content dark:text-base-content dark:border-base-300 hover:bg-red-700 dark:hover:text-base-content"
           :class="isMaximized ? '' : 'pr-4'"
           @click="appWindow.close()"
         >
@@ -58,11 +58,11 @@ onMounted(async () => {
 
   <!--  Linux Controls-->
   <div class="flex order-2 space-x-0" v-if="currentPlatform === 'linux'">
-    <ul class="flex font-normal p-0 flex-row mt-0 border-0 bg-white dark:bg-umbra dark:border-gray-700 gap-1 mr-1">
+    <ul class="flex font-normal p-0 flex-row mt-0 border-0 bg-base-100 dark:bg-base-100 dark:border-base-300 gap-1 mr-1">
       <li>
         <button
           type="button"
-          class="block p-1 text-sm bg-gnome-controller text-white border-gray-700 hover:bg-gnome-controller hover:brightness-125 hover:text-white rounded-full"
+          class="block p-1 text-sm bg-gnome-controller text-base-content border-base-300 hover:bg-gnome-controller hover:brightness-125 hover:text-base-content rounded-full"
           @click="appWindow.minimize()"
         >
           <span><PhMinus size="15" /></span>
@@ -71,7 +71,7 @@ onMounted(async () => {
       <li>
         <button
           type="button"
-          class="block p-1 text-sm bg-gnome-controller text-white border-gray-700 hover:bg-gnome-controller hover:brightness-125 hover:text-white rounded-full"
+          class="block p-1 text-sm bg-gnome-controller text-base-content border-base-300 hover:bg-gnome-controller hover:brightness-125 hover:text-base-content rounded-full"
           @click="appWindow.toggleMaximize()"
         >
           <span v-if="isMaximized"><PhResize size="15" /></span>
@@ -81,7 +81,7 @@ onMounted(async () => {
       <li>
         <button
           type="button"
-          class="block p-1 text-sm bg-gnome-controller text-white border-gray-700 hover:bg-gnome-controller hover:brightness-125 hover:text-white rounded-full"
+          class="block p-1 text-sm bg-gnome-controller text-base-content border-base-300 hover:bg-gnome-controller hover:brightness-125 hover:text-base-content rounded-full"
           @click="appWindow.close()"
         >
           <span><PhX size="15" /></span>
