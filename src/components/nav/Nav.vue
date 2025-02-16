@@ -3,7 +3,7 @@ import { onMounted, onUnmounted, ref } from "vue";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { platform } from "@tauri-apps/plugin-os";
 import { invoke } from "@tauri-apps/api/core";
-import AboutModel from "./AboutModel.vue";
+import AboutModel from "../AboutModel.vue";
 import WindowControls from "./WindowControls.vue";
 
 const fileMenuDropdownOpen = ref(false);
@@ -85,7 +85,7 @@ onUnmounted(() => {
           class="flex font-normal p-0 space-x-2 flex-row mt-0 border-0 bg-base-100 dark:bg-base-100 dark:border-base-300"
         >
           <li>
-            <img src="../assets/logo.png" class="ml-1 h-6" alt="CiteMe Logo" />
+            <img src="../../assets/logo.png" class="ml-1 h-6" alt="CiteMe Logo" />
           </li>
           <!--File Menu-->
           <li class="relative dropdown-container">
