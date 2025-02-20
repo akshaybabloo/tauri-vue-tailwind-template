@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PhMinus, PhResize, PhSquare, PhX } from "@phosphor-icons/vue";
+import { PhMinus, PhCopy, PhSquare, PhX } from "@phosphor-icons/vue";
 import { onMounted, ref } from "vue";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { platform } from "@tauri-apps/plugin-os";
@@ -73,7 +73,7 @@ const clearTooltipTimer = (tooltipRef: any) => {
             class="py-2 px-4 text-sm text-base-content dark:text-base-content dark:border-base-300 hover:bg-base-300 dark:hover:bg-base-300 dark:hover:text-base-content"
             @click="appWindow.toggleMaximize()"
           >
-            <span v-if="isMaximized"><PhResize size="20" /></span>
+            <span v-if="isMaximized"><PhCopy size="20" /></span>
             <span v-else><PhSquare size="20" /></span>
           </button>
         </div>
@@ -133,7 +133,7 @@ const clearTooltipTimer = (tooltipRef: any) => {
             class="block p-1 text-sm bg-gnome-controller text-base-content border-base-300 hover:bg-gnome-controller hover:brightness-125 hover:text-base-content rounded-full"
             @click="appWindow.toggleMaximize()"
           >
-            <span v-if="isMaximized"><PhResize size="15" /></span>
+            <span v-if="isMaximized"><PhCopy size="15" /></span>
             <span v-else><PhSquare size="15" /></span>
           </button>
         </div>
