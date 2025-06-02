@@ -28,7 +28,7 @@
     "@tauri-apps/cli": "^2.5.0",
     "@types/node": "^22.15.3",
     "@vitejs/plugin-vue": "^5.2.3",
-    "daisyui": "^5.0.28",
+    "daisyui": "^5.0.43",
     "postcss": "^8.5.3",
     "prettier": "3.5.3",
     "typescript": "~5.8.3",
