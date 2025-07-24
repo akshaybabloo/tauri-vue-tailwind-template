@@ -37,9 +37,17 @@ const toggleDropdown = (dropdown: 'file' | 'about') => {
 }
 
 const handleMenuHover = (menu: 'file' | 'about') => {
-  // Only switch if any menu is already open
-  if (fileMenuDropdownOpen.value || aboutMenuDropdownOpen.value) {
-    toggleDropdown(menu)
+  const isAnyMenuOpen = fileMenuDropdownOpen.value || aboutMenuDropdownOpen.value
+  if (!isAnyMenuOpen) {
+    return
+  }
+
+  if (menu === 'file' && !fileMenuDropdownOpen.value) {
+    aboutMenuDropdownOpen.value = false
+    fileMenuDropdownOpen.value = true
+  } else if (menu === 'about' && !aboutMenuDropdownOpen.value) {
+    fileMenuDropdownOpen.value = false
+    aboutMenuDropdownOpen.value = true
   }
 }
 
