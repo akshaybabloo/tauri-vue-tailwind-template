@@ -1,42 +1,42 @@
 <script setup lang="ts">
-import { PhMinus, PhCopy, PhSquare, PhX } from "@phosphor-icons/vue";
-import { onMounted, ref } from "vue";
-import { getCurrentWindow } from "@tauri-apps/api/window";
-import { platform } from "@tauri-apps/plugin-os";
+import { PhMinus, PhCopy, PhSquare, PhX } from '@phosphor-icons/vue'
+import { onMounted, ref } from 'vue'
+import { getCurrentWindow } from '@tauri-apps/api/window'
+import { platform } from '@tauri-apps/plugin-os'
 
-const isMaximized = ref(false);
-const showMinimizeTooltip = ref(false);
-const showMaximizeTooltip = ref(false);
-const showCloseTooltip = ref(false);
+const isMaximized = ref(false)
+const showMinimizeTooltip = ref(false)
+const showMaximizeTooltip = ref(false)
+const showCloseTooltip = ref(false)
 
 // Change to number type for browser setTimeout
-let tooltipTimeout: number | null = null;
+let tooltipTimeout: number | null = null
 
-const appWindow = getCurrentWindow();
-const currentPlatform = platform();
+const appWindow = getCurrentWindow()
+const currentPlatform = platform()
 
 // Lifecycle hooks for event listener
 onMounted(async () => {
-  console.log(currentPlatform);
+  console.log(currentPlatform)
 
-  isMaximized.value = await appWindow.isMaximized();
+  isMaximized.value = await appWindow.isMaximized()
   await appWindow.onResized(async () => {
-    isMaximized.value = await appWindow.isMaximized();
-  });
-});
+    isMaximized.value = await appWindow.isMaximized()
+  })
+})
 
 const startTooltipTimer = (tooltipRef: any) => {
   tooltipTimeout = window.setTimeout(() => {
-    tooltipRef.value = true;
-  }, 5000);
-};
+    tooltipRef.value = true
+  }, 5000)
+}
 
 const clearTooltipTimer = (tooltipRef: any) => {
   if (tooltipTimeout) {
-    window.clearTimeout(tooltipTimeout);
+    window.clearTimeout(tooltipTimeout)
   }
-  tooltipRef.value = false;
-};
+  tooltipRef.value = false
+}
 </script>
 
 <template>

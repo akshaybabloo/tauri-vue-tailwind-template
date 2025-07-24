@@ -8,6 +8,14 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      tauri:
+        patterns:
+          - "@tauri-apps*"
+      tailwindcss:
+        patterns:
+          - "@tailwindcss*"
+          - "tailwindcss*"
   - package-ecosystem: "pip"
     directory: "/"
     schedule:

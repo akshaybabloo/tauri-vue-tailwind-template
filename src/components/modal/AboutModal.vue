@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { invoke } from "@tauri-apps/api/core";
+import { onMounted, ref } from 'vue'
+import { invoke } from '@tauri-apps/api/core'
 
-const model = defineModel("modelValue");
-const version = ref<string | null>(null);
+const model = defineModel('modelValue')
+const version = ref<string | null>(null)
 
 onMounted(async () => {
-  version.value = await invoke("application_version");
-});
+  version.value = await invoke('application_version')
+})
 </script>
 
 <template>

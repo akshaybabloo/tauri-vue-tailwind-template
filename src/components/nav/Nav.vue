@@ -1,77 +1,77 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
-import { getCurrentWindow } from "@tauri-apps/api/window";
-import { platform } from "@tauri-apps/plugin-os";
-import { invoke } from "@tauri-apps/api/core";
-import AboutModal from "../modal/AboutModal.vue";
-import WindowControls from "./WindowControls.vue";
+import { onMounted, onUnmounted, ref } from 'vue'
+import { getCurrentWindow } from '@tauri-apps/api/window'
+import { platform } from '@tauri-apps/plugin-os'
+import { invoke } from '@tauri-apps/api/core'
+import AboutModal from '../modal/AboutModal.vue'
+import WindowControls from './WindowControls.vue'
 
-const fileMenuDropdownOpen = ref(false);
-const aboutMenuDropdownOpen = ref(false);
-const isMaximized = ref(false);
-const showAbout = ref(false);
+const fileMenuDropdownOpen = ref(false)
+const aboutMenuDropdownOpen = ref(false)
+const isMaximized = ref(false)
+const showAbout = ref(false)
 
-const appWindow = getCurrentWindow();
-const currentPlatform = platform();
+const appWindow = getCurrentWindow()
+const currentPlatform = platform()
 
 // Function to close all dropdowns
 const closeAllDropdowns = () => {
-  fileMenuDropdownOpen.value = false;
-  aboutMenuDropdownOpen.value = false;
-};
+  fileMenuDropdownOpen.value = false
+  aboutMenuDropdownOpen.value = false
+}
 
 const toggleDevTools = async () => {
-  await invoke("toggle_devtools");
-  closeAllDropdowns();
-};
+  await invoke('toggle_devtools')
+  closeAllDropdowns()
+}
 
 // Function to toggle a specific dropdown
-const toggleDropdown = (dropdown: "file" | "about") => {
-  if (dropdown === "file") {
-    aboutMenuDropdownOpen.value = false;
-    fileMenuDropdownOpen.value = !fileMenuDropdownOpen.value;
+const toggleDropdown = (dropdown: 'file' | 'about') => {
+  if (dropdown === 'file') {
+    aboutMenuDropdownOpen.value = false
+    fileMenuDropdownOpen.value = !fileMenuDropdownOpen.value
   } else {
-    fileMenuDropdownOpen.value = false;
-    aboutMenuDropdownOpen.value = !aboutMenuDropdownOpen.value;
+    fileMenuDropdownOpen.value = false
+    aboutMenuDropdownOpen.value = !aboutMenuDropdownOpen.value
   }
-};
+}
 
-const handleMenuHover = (menu: "file" | "about") => {
+const handleMenuHover = (menu: 'file' | 'about') => {
   // Only switch if any menu is already open
   if (fileMenuDropdownOpen.value || aboutMenuDropdownOpen.value) {
-    toggleDropdown(menu);
+    toggleDropdown(menu)
   }
-};
+}
 
 // Click outside handler
 const handleClickOutside = (event: MouseEvent) => {
-  const target = event.target as HTMLElement;
-  if (!target.closest(".dropdown-container")) {
-    closeAllDropdowns();
+  const target = event.target as HTMLElement
+  if (!target.closest('.dropdown-container')) {
+    closeAllDropdowns()
   }
-};
+}
 
 const openAboutModel = () => {
-  showAbout.value = true;
-  closeAllDropdowns();
-};
+  showAbout.value = true
+  closeAllDropdowns()
+}
 
 // Lifecycle hooks for event listener
 onMounted(async () => {
-  document.addEventListener("click", handleClickOutside);
-  console.debug("Platform = " + currentPlatform);
+  document.addEventListener('click', handleClickOutside)
+  console.debug('Platform = ' + currentPlatform)
 
-  isMaximized.value = await appWindow.isMaximized();
+  isMaximized.value = await appWindow.isMaximized()
   await appWindow.onResized(async () => {
-    isMaximized.value = await appWindow.isMaximized();
-  });
+    isMaximized.value = await appWindow.isMaximized()
+  })
 
   // TODO: Mac OS specific menu bar
-});
+})
 
 onUnmounted(() => {
-  document.removeEventListener("click", handleClickOutside);
-});
+  document.removeEventListener('click', handleClickOutside)
+})
 </script>
 
 <template>
