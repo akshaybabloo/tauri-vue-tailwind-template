@@ -11,7 +11,8 @@
     "t:dev": "tauri dev",
     "t:build": "tauri build",
     "icon": "tauri icon",
-    "lint": "prettier --write ."
+    "lint": "prettier --write .",
+    "fmt": "biome format --write src/"
   },
   "dependencies": {
     "@phosphor-icons/vue": "^2.2.1",
@@ -24,6 +25,7 @@
     "vue": "^3.5.17"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.1.2",
     "@tailwindcss/postcss": "^4.1.11",
     "@tauri-apps/cli": "^2.5.0",
     "@types/node": "^24.0.0",
