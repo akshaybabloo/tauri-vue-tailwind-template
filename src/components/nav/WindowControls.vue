@@ -5,13 +5,6 @@ import { getCurrentWindow } from '@tauri-apps/api/window'
 import { platform } from '@tauri-apps/plugin-os'
 
 const isMaximized = ref(false)
-const showMinimizeTooltip = ref(false)
-const showMaximizeTooltip = ref(false)
-const showCloseTooltip = ref(false)
-
-// Change to number type for browser setTimeout
-let tooltipTimeout: number | null = null
-
 const appWindow = getCurrentWindow()
 const currentPlatform = platform()
 
@@ -24,36 +17,17 @@ onMounted(async () => {
     isMaximized.value = await appWindow.isMaximized()
   })
 })
-
-const startTooltipTimer = (tooltipRef: any) => {
-  tooltipTimeout = window.setTimeout(() => {
-    tooltipRef.value = true
-  }, 5000)
-}
-
-const clearTooltipTimer = (tooltipRef: any) => {
-  if (tooltipTimeout) {
-    window.clearTimeout(tooltipTimeout)
-  }
-  tooltipRef.value = false
-}
 </script>
 
 <template>
   <!--  Windows Controls-->
   <div class="flex order-2 space-x-0" v-if="currentPlatform === 'windows'">
-    <ul class="flex font-normal p-0 flex-row mt-0 border-0 bg-base-100 dark:bg-base-100 dark:border-base-300">
+    <ul class="flex font-normal p-0 flex-row mt-0 border-0 bg-base-100">
       <li>
-        <div
-          class="tooltip tooltip-bottom"
-          data-tip="minimise"
-          :class="{ 'tooltip-open': showMinimizeTooltip }"
-          @mouseenter="startTooltipTimer(showMinimizeTooltip)"
-          @mouseleave="clearTooltipTimer(showMinimizeTooltip)"
-        >
+        <div class="tooltip tooltip-bottom" data-tip="minimise">
           <button
             type="button"
-            class="py-2 px-4 text-sm text-base-content dark:text-base-content dark:border-base-300 hover:bg-base-300 dark:hover:bg-base-300 dark:hover:text-base-content"
+            class="py-2 px-4 text-sm text-base-content hover:bg-base-300"
             @click="appWindow.minimize()"
           >
             <span><PhMinus size="20" /></span>
@@ -61,16 +35,10 @@ const clearTooltipTimer = (tooltipRef: any) => {
         </div>
       </li>
       <li>
-        <div
-          class="tooltip tooltip-bottom !m-0 !p-0"
-          data-tip="maximise"
-          :class="{ 'tooltip-open': showMaximizeTooltip }"
-          @mouseenter="startTooltipTimer(showMaximizeTooltip)"
-          @mouseleave="clearTooltipTimer(showMaximizeTooltip)"
-        >
+        <div class="tooltip tooltip-bottom !m-0 !p-0" data-tip="maximise">
           <button
             type="button"
-            class="py-2 px-4 text-sm text-base-content dark:text-base-content dark:border-base-300 hover:bg-base-300 dark:hover:bg-base-300 dark:hover:text-base-content"
+            class="py-2 px-4 text-sm text-base-content hover:bg-base-300"
             @click="appWindow.toggleMaximize()"
           >
             <span v-if="isMaximized"><PhCopy size="20" /></span>
@@ -79,16 +47,10 @@ const clearTooltipTimer = (tooltipRef: any) => {
         </div>
       </li>
       <li>
-        <div
-          class="tooltip tooltip-bottom !m-0 !p-0"
-          data-tip="close"
-          :class="{ 'tooltip-open': showCloseTooltip }"
-          @mouseenter="startTooltipTimer(showCloseTooltip)"
-          @mouseleave="clearTooltipTimer(showCloseTooltip)"
-        >
+        <div class="tooltip tooltip-bottom !m-0 !p-0" data-tip="close">
           <button
             type="button"
-            class="py-2 px-4 text-sm m-0 text-base-content dark:text-base-content dark:border-base-300 hover:bg-red-700 dark:hover:text-base-content"
+            class="py-2 px-4 text-sm m-0 text-base-content hover:bg-red-700"
             @click="appWindow.close()"
           >
             <span><PhX size="20" :class="isMaximized ? '' : 'ml-1'" /></span>
@@ -100,17 +62,9 @@ const clearTooltipTimer = (tooltipRef: any) => {
 
   <!--  Linux Controls-->
   <div class="flex order-2 space-x-0" v-if="currentPlatform === 'linux'">
-    <ul
-      class="flex font-normal p-0 flex-row mt-0 border-0 bg-base-100 dark:bg-base-100 dark:border-base-300 gap-1 mr-1"
-    >
+    <ul class="flex font-normal p-0 flex-row mt-0 border-0 bg-base-100 gap-1 mr-1">
       <li>
-        <div
-          class="tooltip tooltip-bottom"
-          data-tip="minimise"
-          :class="{ 'tooltip-open': showMinimizeTooltip }"
-          @mouseenter="startTooltipTimer(showMinimizeTooltip)"
-          @mouseleave="clearTooltipTimer(showMinimizeTooltip)"
-        >
+        <div class="tooltip tooltip-bottom" data-tip="minimise">
           <button
             type="button"
             class="p-1 text-sm bg-gnome-controller text-base-content border-base-300 hover:bg-gnome-controller hover:brightness-125 hover:text-base-content rounded-full"
@@ -121,13 +75,7 @@ const clearTooltipTimer = (tooltipRef: any) => {
         </div>
       </li>
       <li>
-        <div
-          class="tooltip tooltip-bottom !m-0 !p-0"
-          data-tip="maximise"
-          :class="{ 'tooltip-open': showMaximizeTooltip }"
-          @mouseenter="startTooltipTimer(showMaximizeTooltip)"
-          @mouseleave="clearTooltipTimer(showMaximizeTooltip)"
-        >
+        <div class="tooltip tooltip-bottom !m-0 !p-0" data-tip="maximise">
           <button
             type="button"
             class="block p-1 text-sm bg-gnome-controller text-base-content border-base-300 hover:bg-gnome-controller hover:brightness-125 hover:text-base-content rounded-full"
@@ -139,13 +87,7 @@ const clearTooltipTimer = (tooltipRef: any) => {
         </div>
       </li>
       <li>
-        <div
-          class="tooltip tooltip-bottom !m-0 !p-0"
-          data-tip="close"
-          :class="{ 'tooltip-open': showCloseTooltip }"
-          @mouseenter="startTooltipTimer(showCloseTooltip)"
-          @mouseleave="clearTooltipTimer(showCloseTooltip)"
-        >
+        <div class="tooltip tooltip-bottom !m-0 !p-0" data-tip="close">
           <button
             type="button"
             class="block p-1 text-sm bg-gnome-controller text-base-content border-base-300 hover:bg-gnome-controller hover:brightness-125 hover:text-base-content rounded-full"

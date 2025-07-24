@@ -16,5 +16,5 @@ body {
 }
 
 p {
-  @apply text-white;
+  @apply text-base-content;
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Nav from './components/nav/Nav.vue'
-import FooterBar from './components/FooterBar.vue'
+import Nav from '@/components/nav/Nav.vue'
+import FooterBar from '@/components/FooterBar.vue'
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import FooterBar from './components/FooterBar.vue'
         <p>Your code here</p>
     </main>
     <footer class="fixed bottom-0 left-0 right-0 bg-base-100">
-      <FooterBar data="" />
+      <FooterBar />
     </footer>
   </div>
 </template>

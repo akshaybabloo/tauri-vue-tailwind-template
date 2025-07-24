@@ -13,7 +13,7 @@ onMounted(async () => {
 <template>
   <dialog class="modal modal-bottom sm:modal-middle" :class="{ 'modal-open': model }">
     <div class="modal-box border border-base-300">
-      <img src="../../assets/logo.png" class="mx-auto mb-4 w-12 h-12" alt="Logo" />
+      <img src="@/assets/logo.png" class="mx-auto mb-4 w-12 h-12" alt="Logo" />
       <h3 class="text-lg font-bold text-center">tauri-vue-tailwind-template</h3>
       <p class="py-4 text-center">Version: {{ version }}</p>
       <div class="modal-action">
