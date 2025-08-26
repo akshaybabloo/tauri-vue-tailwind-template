@@ -22,7 +22,7 @@
     "@tauri-apps/plugin-os": "^2.3.0",
     "@tauri-apps/plugin-shell": "^2.3.0",
     "tailwindcss": "^4.1.12",
-    "vue": "^3.5.18"
+    "vue": "^3.5.20"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.2",
